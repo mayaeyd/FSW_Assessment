@@ -13,4 +13,28 @@ class ProjectsController extends Controller
             "projects"=>$projects,
         ]);
     }
+
+    public function create_project(Request $request){
+        $project = Project::create([
+            "name"=> $request->name,
+        ]);
+
+        return response()->json([
+            "created_project"=> $project,
+        ]);
+    }
+
+    public function update_project(Request $request)
+    {
+        $project = Project::find($request->id)->update([
+            "name" => $request->name,
+        ]);
+
+        return response()->json([
+            "updated_project" => $project,
+        ]);
+
+    }
+
+    
 }
