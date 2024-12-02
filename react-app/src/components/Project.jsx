@@ -1,5 +1,6 @@
 import MemberIcon from "./MemberIcon";
 
+//accepts a project object containing name, description, and an array of members.
 const Project = ({ project }) => {
   const { name, description, members } = project;
 
