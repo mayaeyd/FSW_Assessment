@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\UpdateRequestsNum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix("/projects")->middleware('update.requests.num')->group(function(){
+Route::prefix("/projects")->middleware([UpdateRequestsNum::class])->group(function(){
     Route::get("/",[ProjectsController::class,"get_projects"]);
     Route::post("/",[ProjectsController::class,"create_project"]);
     Route::get("/{id}",[ProjectsController::class,"get_project"]);
@@ -13,7 +14,7 @@ Route::prefix("/projects")->middleware('update.requests.num')->group(function(){
     Route::delete("/{id}",[ProjectsController::class,"delete_project"]);
 });
 
-Route::prefix("/users")->middleware('update.requests.num')->group(function(){
+Route::prefix("/users")->middleware([UpdateRequestsNum::class])->group(function(){
     Route::get("/",[UsersController::class,"get_users"]);
     Route::post("/",[UsersController::class,"create_user"]);
     Route::get("/{id}",[UsersController::class,"get_user"]);
