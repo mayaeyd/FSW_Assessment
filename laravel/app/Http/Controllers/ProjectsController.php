@@ -36,5 +36,20 @@ class ProjectsController extends Controller
 
     }
 
-    
+    public function delete_project(Request $request)
+    {
+        $project = Project::find($request->id)->delete();
+
+        return response()->json([
+            "deleted_project" => $project,
+        ]);
+    }
+
+    public function getproject(Request $request)
+    {
+        $project = Project::find($request->id);
+        return response()->json([
+            "project" => $project,
+        ]);
+    }
 }
