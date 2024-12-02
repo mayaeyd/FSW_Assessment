@@ -15,6 +15,13 @@ class UpdateRequestsNum
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if($request->has('id')){
+            $user = User::find($request->user_id);
+
+            $requestsCount = $user->requests_num ?? 0;
+            $user->requests_num = $requestsCount+1;
+            $user->save();
+        }
         return $next($request);
     }
 }
