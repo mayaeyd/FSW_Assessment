@@ -20,6 +20,9 @@ const ProjectsProvider = ({ children }) => {
     }, []);
   
     return (
+      <ProjectsContext.Provider value={{ projects, loading }}>
+        {children}
+      </ProjectsContext.Provider>
     );
   };
   
