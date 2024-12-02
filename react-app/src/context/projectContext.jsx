@@ -20,7 +20,7 @@ const ProjectsProvider = ({ children }) => {
     }, []);
   
     return (
-      <ProjectsContext.Provider value={{ projects, loading }}>
+      <ProjectsContext.Provider value={{ projects }}>
         {children}
       </ProjectsContext.Provider>
     );
